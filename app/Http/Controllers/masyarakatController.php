@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Masyarakat;
+use App\Pengaduan;
+use Auth;
 use Illuminate\Http\Request;
 
 class masyarakatController extends Controller
@@ -92,5 +94,11 @@ class masyarakatController extends Controller
             alert()->success('Data Berhasil Terhapus dari Database.', 'Terhapus!')->persistent('Ok');
             return redirect()->route('data.mas');
         }
+    }
+
+    public function dashboard()
+    {
+        $riwayat = Pengaduan::where('masyarakat_id', Auth::id())->orderBy('updated_at','desc')->get();
+        return view('masyarakat.dashboard',compact('riwayat'));
     }
 }

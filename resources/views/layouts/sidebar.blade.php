@@ -4,28 +4,24 @@
     <!-- Logo -->
     <li class="logo-sn waves-effect py-3">
       <div class="text-center">
-        <a href="#" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"></a>
+        <a href="#" class="pl-0"><img src="{{url('material/img/logo.jpg')}}" width="100"></a>
       </div>
     </li>
 
-    <!-- Search Form -->
-    <li>
-      <form class="search-form" role="search">
-        <div class="md-form mt-0 waves-light">
-          <input type="text" class="form-control py-2" placeholder="Search">
-        </div>
-      </form>
-    </li>
+    <hr>
 
     <!-- Side navigation links -->
     <li>
       <ul class="collapsible collapsible-accordion">
 
         <li>
-          <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('petugas.home')}}" class="waves-effect">Dashboard</a>
+          <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('masyarakat.dashboard')}}" class="waves-effect">Dashboard</a>
         </li>
         
          @if(Auth::user()->level == 'admin' || Auth::user()->level == 'petugas')
+         <li>
+          <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('petugas.home')}}" class="waves-effect">Dashboard Petugas</a>
+        </li>
         <li>
           <a class="collapsible-header waves-effect arrow-r">Data Master<i class="fas fa-angle-down rotate-icon"></i>
           </a>

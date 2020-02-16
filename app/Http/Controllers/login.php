@@ -16,7 +16,7 @@ class login extends Controller
     	if (count($data1)>0) {
     		// login berhasil untuk masyarakat
     		Auth::guard('masyarakat')->LoginUsingId($data1[0]['id']);
-    		return redirect()->route('masyarakat.home');
+    		return redirect()->route('masyarakat.dashboard');
     	} else if(count($data2)>0){
     		// berhasil login petugas
     		Auth::guard('pengurus')->LoginUsingId($data2[0]['id']);

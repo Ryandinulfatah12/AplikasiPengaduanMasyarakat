@@ -32,8 +32,8 @@ class pengaduanController extends Controller
     	$pengaduan->isi_laporan = $req->isi_laporan;
     	$pengaduan->status = $req->status;
     	if ($pengaduan->save()) {
-            alert()->success('Data Berhasil Tersimpan ke Database.', 'Tersimpan!')->persistent('Oke');
-    		return redirect()->route('masyarakat.home');
+            alert()->success('Pengaduan Anda Berhasil Dikirimkan.', 'Terkirim!')->persistent('Oke');
+    		return redirect()->route('masyarakat.dashboard');
     	} else {
     		alert()->info('Harap Periksa lagi data Formulir anda.','Tidak Tersimpan!')->autoclose(4000);
     	}

@@ -47,9 +47,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
-	Route::get('/', function(){
-		return view('masyarakat.dashboard');
-	})->name('masyarakat.home');
+	Route::get('/','masyarakatController@dashboard')->name('masyarakat.dashboard');
 	Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
 	Route::post('/kirimpengaduan','pengaduanController@postPengaduan')->name('post.pengaduan');
 	

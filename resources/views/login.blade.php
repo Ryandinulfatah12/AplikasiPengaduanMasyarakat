@@ -55,7 +55,7 @@
 
                   <!-- Header -->
                   <div class="form-header purple-gradient">
-                    <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-user"></i> Log in:</h3>
+                    <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-user"></i> Pengaduan Masyarakat</h3>
                   </div>
 
                   <!-- Body -->
@@ -84,7 +84,7 @@
                       </div>
 
                       <div class="text-center">
-                        <button type="submit" class="btn purple-gradient btn-lg">Sign up</button>
+                        <button type="submit" class="btn purple-gradient btn-lg">Login</button>
                       </div>
                     </form>
                 </div>
