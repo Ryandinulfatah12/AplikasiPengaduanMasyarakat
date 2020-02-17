@@ -73,6 +73,13 @@
             <h4 class="mb-4"><strong>Isi Laporan</strong></h4>
             <p>{{$rw->isi_laporan}}</p>
             <p>Pada : {{date('d F Y H:i', strtotime($rw->created_at))}}</p>
+
+            @if($rw['status'] == 'ditanggapi')
+            <a class="btn btn-primary btn-sm" href="{{route('detail.pengaduan', ['id' => $rw->id])}}">Detail</a>
+            @else
+            <span class="badge badge-warning">Belum Ditanggapi</span>
+            @endif
+
           </div>
           <!-- Grid column -->
 

@@ -13,7 +13,6 @@
     <!-- Side navigation links -->
     <li>
       <ul class="collapsible collapsible-accordion">
-
         <li>
           <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('masyarakat.dashboard')}}" class="waves-effect">Dashboard</a>
         </li>

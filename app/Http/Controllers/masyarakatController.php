@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Masyarakat;
 use App\Pengaduan;
+use App\Tanggapan;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -100,5 +101,20 @@ class masyarakatController extends Controller
     {
         $riwayat = Pengaduan::where('masyarakat_id', Auth::id())->orderBy('updated_at','desc')->get();
         return view('masyarakat.dashboard',compact('riwayat'));
+    }
+
+    public function detail(Request $req)
+    {
+        $show = Pengaduan::join('masyarakat','masyarakat.id','pengaduan.masyarakat_id')
+            ->where('pengaduan.id', $req->id)
+            ->select('pengaduan.*','fullname')
+            ->first();
+
+        $show2 = Tanggapan::join('pengaduan','pengaduan.id','tanggapan.pengaduan_id')
+            ->join('petugas','petugas.id','tanggapan.petugas_id')
+            ->select('tanggapan.*','pengaduan.*','petugas.fullname')
+            ->where('tanggapan.pengaduan_id', $req->id)
+            ->get();
+        return view('masyarakat.detail', compact('show'), compact('show2'));
     }
 }

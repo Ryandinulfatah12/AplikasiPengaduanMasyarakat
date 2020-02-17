@@ -8,7 +8,13 @@ Route::get('/logout','login@logout')->name('logout');
 // petugas
 Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 	Route::get('/', function(){
-		return view('petugas.dashboard');
+		// pengaduan diterima
+		$pengaduanditerima = App\Pengaduan::where('status','ditanggapi')->get();
+		$chart = [];
+		foreach($pengaduanditerima as $data) {
+			$chart[] = $data->count();
+		}
+		return view('petugas.dashboard', compact('chart'));
 	})->name('petugas.home');
 
 	// Petugas CRUD
@@ -43,11 +49,16 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 
 	});
 
+	Route::group(['prefix' => 'report','middleware'=>['auth']], function() {
+		Route::get('/pdf','reportController@pengaduan')->name('pengaduan.pdf');
+	});
+
 });
 
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/','masyarakatController@dashboard')->name('masyarakat.dashboard');
+	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan');
 	Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
 	Route::post('/kirimpengaduan','pengaduanController@postPengaduan')->name('post.pengaduan');
 	

@@ -5,6 +5,7 @@
 <section class="mt-3">
 	<h1>Ikhtisar Data Pengaduan</h1>
 	<div class="col-md-12">
+		<a href="{{route('pengaduan.pdf')}}" class="btn btn-danger">Export PDF</a>
 	    <div class="card">
 	        <div class="card-body">
 	          <table id="dt-material-checkbox" class="table table-striped" cellspacing="0" width="100%">

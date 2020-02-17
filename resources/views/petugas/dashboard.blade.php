@@ -141,10 +141,10 @@ var ctxB = document.getElementById("barChart").getContext('2d');
 var myBarChart = new Chart(ctxB, {
   type: 'bar',
   data: {
-    labels: ["Pengaduan", "Tanggapan"],
+    labels: ["Pengaduan Diterima", "Pengaduan Ditolak"],
     datasets: [{
-      label: '# of Votes',
-      data: [4, 4],
+      label: 'Data Pengaduan',
+      data: {!!json_encode($chart)!!},
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)'
