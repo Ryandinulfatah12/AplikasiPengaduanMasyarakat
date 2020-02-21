@@ -38,7 +38,7 @@
 	              	</td>
 	              	<td>
 	              		@if($pd['status'] == 'ditanggapi')
-	              		<a href="{{route('detail.pengaduan', ['id'=>$pd->id])}}" class="btn btn-success btn-sm">Detail</a>
+	              		<a href="{{route('detail.pengaduan',['id'=>$pd->id])}}" class="btn btn-success btn-sm">Detail</a>
 	              		@else
 	              		<a href="{{route('verifikasi')}}" class="btn btn-warning btn-sm">Belum Ditanggapi</a>
 	              		@endif

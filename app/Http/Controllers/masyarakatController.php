@@ -117,4 +117,30 @@ class masyarakatController extends Controller
             ->get();
         return view('masyarakat.detail', compact('show'), compact('show2'));
     }
+
+    public function register()
+    {
+        return view('register');
+    }
+    public function registerPost(Request $req)
+    {
+        \Validator::make($req->all(), [
+            'fullname'=>'required|between:3,100',
+            'username'=>'required|between:4,50|unique:masyarakat,username|alpha_dash',
+            'password'=>'nullable|min:6',
+            'repassword'=>'same:password',
+            'telp'=>'required:max:11',
+            'nik'=>'required',
+        ])->validate();
+
+        $register = new Masyarakat;
+        $register->fullname = $req->fullname;
+        $register->username = $req->username;
+        $register->password = $req->password;
+        $register->telp = $req->telp;
+        $register->nik = $req->nik;
+        if ($register->save()) {
+            return back()->with('info','register');
+        }
+    }
 }

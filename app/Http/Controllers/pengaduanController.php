@@ -61,7 +61,7 @@ class pengaduanController extends Controller
             ->select('tanggapan.*','pengaduan.*','petugas.fullname')
             ->where('tanggapan.pengaduan_id',$req->id)
             ->get();
-        return view('petugas.pages.pengaduan.detail', compact('show'),compact('show2'));    
+        return view('petugas.pages.pengaduan.detail', compact('show'),compact('show2'));
     }
 
     public function getEntri($id)

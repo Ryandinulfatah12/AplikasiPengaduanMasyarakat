@@ -3,7 +3,7 @@
 <!-- Main Navigation -->
   <header>
     <!-- Intro Section -->
-    <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('material/img/wibu.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('material/img/pengaduan3.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
       <div class="mask rgba-black-light">
         <div class="container h-100 d-flex justify-content-center align-items-center">
           <div class="row pt-5 mt-3">
@@ -75,7 +75,7 @@
             <p>Pada : {{date('d F Y H:i', strtotime($rw->created_at))}}</p>
 
             @if($rw['status'] == 'ditanggapi')
-            <a class="btn btn-primary btn-sm" href="{{route('detail.pengaduan', ['id' => $rw->id])}}">Detail</a>
+            <a class="btn btn-primary btn-sm" href="{{route('detail.pengaduan2', ['id' => $rw->id])}}">Detail</a>
             @else
             <span class="badge badge-warning">Belum Ditanggapi</span>
             @endif

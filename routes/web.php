@@ -2,6 +2,8 @@
 Route::get('/', function() {
 	return view('login');
 })->middleware('guest')->name('login');
+Route::get('/register','masyarakatController@register')->name('register');
+Route::post('registerpost','masyarakatController@registerPost')->name('post.register');
 Route::post('/kirimlogin', 'login@login');
 Route::get('/logout','login@logout')->name('logout');
 
@@ -38,7 +40,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 	});
 
 	// Pengaduan
-	Route::group(['prefix' => 'pengaduan','middleware'=>['auth']], function() {
+	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/','pengaduanController@index')->name('data.pengaduan');
 		Route::get('/entri','pengaduanController@entri')->name('verifikasi');
 		Route::get('/detail/{id}','pengaduanController@detail')->name('detail.pengaduan');
@@ -58,7 +60,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/','masyarakatController@dashboard')->name('masyarakat.dashboard');
-	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan');
+	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan2');
 	Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
 	Route::post('/kirimpengaduan','pengaduanController@postPengaduan')->name('post.pengaduan');
 	

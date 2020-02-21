@@ -90,8 +90,9 @@
                 </div>
               </div>
               <!-- Form with header -->
-
+            <a href="{{route('register')}}" class="text-white">Belum Punya Akun?</a>
             </div>
+
           </div>
         </div>
       </div>
