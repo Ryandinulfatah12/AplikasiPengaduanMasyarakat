@@ -11,7 +11,7 @@ class pengaduanController extends Controller
     public function index()
     {
     	$pengaduan = Pengaduan::join('masyarakat','masyarakat.id','pengaduan.masyarakat_id')
-            ->select('pengaduan.*','fullname')
+            ->select('pengaduan.*','masyarakat.*')
             ->orderBy('pengaduan.updated_at','desc')
             ->paginate(10);
     	return view('petugas.pages.pengaduan.data-pengaduan', compact('pengaduan'));

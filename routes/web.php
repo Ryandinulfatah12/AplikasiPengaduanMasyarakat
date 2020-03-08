@@ -4,7 +4,7 @@ Route::get('/', function() {
 })->middleware('guest')->name('login');
 Route::get('/register','masyarakatController@register')->name('register');
 Route::post('registerpost','masyarakatController@registerPost')->name('post.register');
-Route::post('/kirimlogin', 'login@login');
+Route::post('/kirimlogin', 'login@login')->name('kirimlogin');
 Route::get('/logout','login@logout')->name('logout');
 
 // petugas

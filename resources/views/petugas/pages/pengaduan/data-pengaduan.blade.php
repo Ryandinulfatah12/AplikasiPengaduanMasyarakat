@@ -13,6 +13,7 @@
 	              <tr>
 	                <th>No</th>
 	                <th>Dari</th>
+	                <th>NIK</th>
 	                <th>Tanggal Dibuat</th>
 	                <th>Status</th>
 	                <th>Aksi</th>
@@ -23,6 +24,7 @@
 	              <tr>
 	              	<td>{{$loop->iteration}}</td>
 	              	<td>{{$pd->fullname}}</td>
+	              	<td>{{$pd->nik}}</td>
 	              	<td>{{date('d F Y H:i',strtotime($pd->created_at))}}</td>
 	              	<td>
 	              		<?php 

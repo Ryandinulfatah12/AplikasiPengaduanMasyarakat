@@ -22,7 +22,7 @@ class login extends Controller
     		Auth::guard('pengurus')->LoginUsingId($data2[0]['id']);
     		return redirect()->route('petugas.home');
     	} else {
-    		return 'username password tidak terdaftar';
+    		return back()->with('info',1);
     	}
     	
     }

@@ -13,9 +13,11 @@
     <!-- Side navigation links -->
     <li>
       <ul class="collapsible collapsible-accordion">
+        @if(!Auth::user()->level == 'admin' || !Auth::user()->level == 'petugas')
         <li>
           <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('masyarakat.dashboard')}}" class="waves-effect">Dashboard</a>
         </li>
+        @endif
         
          @if(Auth::user()->level == 'admin' || Auth::user()->level == 'petugas')
          <li>

@@ -3,7 +3,7 @@
 <!-- Main Navigation -->
   <header>
     <!-- Intro Section -->
-    <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('material/img/pengaduan3.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('material/img/pengaduan3.png'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 100%;">
       <div class="mask rgba-black-light">
         <div class="container h-100 d-flex justify-content-center align-items-center">
           <div class="row pt-5 mt-3">
@@ -39,7 +39,7 @@
         <p class="text-center mb-5 w-responsive mx-auto">Duis aute irure dolor in reprehenderit in voluptate velit esse
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
           officia deserunt mollit anim id est laborum.</p>
-
+        
         <!-- Grid row -->
         @foreach($riwayat as $rw)
         <div class="row">

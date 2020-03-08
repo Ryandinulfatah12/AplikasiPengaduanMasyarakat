@@ -25,10 +25,12 @@ class masyarakatController extends Controller
     	\Validator::make($req->all(), [
     		'fullname'=>'required|between:3,100',
     		'username'=>'required|between:4,50|unique:petugas,username|alpha_dash',
+            'username'=>'required|between:4,50|unique:masyarakat,username|alpha_dash',
     		'password'=>'nullable|min:6',
     		'repassword'=>'same:password',
     		'telp'=>'required:max:11',
-    		'nik'=>'required',
+    		'nik'=>'required:max:17',
+            'nik'=>'required:min:17'
     	])->validate();
 
     	$petugas = new Masyarakat;
@@ -54,10 +56,12 @@ class masyarakatController extends Controller
         \Validator::make($req->all(), [
             'fullname'=>'required|between:3,100',
             'username'=>'required|between:4,50|unique:petugas,username,'.$req->id.',|alpha_dash',
+            'username'=>'required|between:4,50|unique:masyarakat,username,'.$req->id.',|alpha_dash',
             'telp'=>'required',
             'password'=>'nullable|min:6',
             'repassword'=>'same:password',
-            'nik'=>'required',
+            'nik'=>'required:max:17',
+            'nik'=>'required:min:17'
         ])->validate();
 
         if(!empty($req->password)) {
@@ -126,11 +130,13 @@ class masyarakatController extends Controller
     {
         \Validator::make($req->all(), [
             'fullname'=>'required|between:3,100',
+            'username'=>'required|between:4,50|unique:petugas,username|alpha_dash',
             'username'=>'required|between:4,50|unique:masyarakat,username|alpha_dash',
             'password'=>'nullable|min:6',
             'repassword'=>'same:password',
             'telp'=>'required:max:11',
-            'nik'=>'required',
+            'nik'=>'required:max:17',
+            'nik'=>'required:min:17',
         ])->validate();
 
         $register = new Masyarakat;

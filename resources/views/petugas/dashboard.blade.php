@@ -1,7 +1,10 @@
 <?php 
-	$petugas = App\Pengurus::all();
-	$pengaduan = App\Pengaduan::all();
-	$tanggapan = App\Tanggapan::all();
+	$mas = App\Masyarakat::all()->count();
+	$ditanggapi = App\Pengaduan::where('status','ditanggapi')->count();
+	$ditolak = App\Pengaduan::where('status','ditolak')->count();
+	$pending = App\Pengaduan::where('status','pending')->count();
+	$all = App\Pengaduan::all()->count();
+	$alltanggapan = App\Tanggapan::all()->count();
  ?>
 @extends('layouts.main')
 @section('title','Petugas')
@@ -48,8 +51,8 @@
 		        </div>
 
 		        <div class="col-md-7 col-7 text-right pr-5">
-		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$petugas->count()}}</h5>
-		          <p class="font-small grey-text">Data Petugas</p>
+		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$mas}}</h5>
+		          <p class="font-small grey-text">Data Masyarakat</p>
 		        </div>
 
 		      </div>
@@ -64,16 +67,16 @@
 		    <div class="card">
 
 		      <!-- Card Data -->
-		      <div class="row mt-3">
+		      <div class="row">
 
 		        <div class="col-md-5 col-5 text-left pl-4">
-		          <a type="button" class="btn-floating btn-lg red accent-2 ml-4"><i class="fas fa-database"
+		          <a type="button" class="btn-floating btn-lg success-color accent-2 ml-4"><i class="fas fa-database"
 		              aria-hidden="true"></i></a>
 		        </div>
 
 		        <div class="col-md-7 col-7 text-right pr-5">
-		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$pengaduan->count()}}</h5>
-		          <p class="font-small grey-text">Data Pengaduan</p>
+		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$ditanggapi}}</h5>
+		          <p class="font-small grey-text">Pengaduan Ditanggapi</p>
 		        </div>
 
 		      </div>
@@ -91,13 +94,13 @@
 		      <div class="row mt-3">
 
 		        <div class="col-md-5 col-5 text-left pl-4">
-		          <a type="button" class="btn-floating btn-lg success-color accent-2 ml-4"><i class="fas fa-database"
+		          <a type="button" class="btn-floating btn-lg danger-color accent-2 ml-4"><i class="fas fa-database"
 		              aria-hidden="true"></i></a>
 		        </div>
 
 		        <div class="col-md-7 col-7 text-right pr-5">
-		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$tanggapan->count()}}</h5>
-		          <p class="font-small grey-text">Data Tanggapan</p>
+		          <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{$ditolak}}</h5>
+		          <p class="font-small grey-text">Pengaduan Ditolak</p>
 		        </div>
 
 		      </div>
@@ -108,63 +111,51 @@
 		</div>
 	</div>
 	<div class="col-md-12 animated fadeInLeft">
-		<!-- Card -->
-        <div class="card card-cascade narrower">
+		<div class="row">
 
-          <!-- Card image -->
-          <div class="view view-cascade gradient-card-header blue">
-            <h5 class="mb-0">Pengaduan & Tanggapan</h5>
-          </div>
-          <!-- Card image -->
+			<div class="col-md-7">
+				<div class="card card-cascade narrower">
+		          <div class="view view-cascade gradient-card-header blue">
+		            <h5 class="mb-0">Pengaduan & Tanggapan</h5>
+		          </div>
+		          <div class="card-body card-body-cascade text-center">
+		            <canvas id="myBarChart"></canvas>
+		          </div>
+		        </div>
+			</div>
 
-          <!-- Card content -->
-          <div class="card-body card-body-cascade text-center">
-
-            <canvas id="barChart" height="200px"></canvas>
-
-          </div>
-          <!-- Card content -->
-
-        </div>
-        <!-- Card -->
+			<div class="col-md-5">
+				<div class="card card-cascade narrower">
+		          <div class="view view-cascade gradient-card-header blue">
+		            <h5 class="mb-0">Grafik Pie</h5>
+		          </div>
+		          <div class="card-body card-body-cascade text-center">
+		            <canvas id="myPieChart"></canvas>
+		          </div>
+		        </div>
+			</div>
+		</div>
+        
 	</div>
-	
-
 
 
 </section>
 @endsection
 
 @push('js')
-<script>
-var ctxB = document.getElementById("barChart").getContext('2d');
-var myBarChart = new Chart(ctxB, {
-  type: 'bar',
-  data: {
-    labels: ["Pengaduan Diterima", "Pengaduan Ditolak"],
-    datasets: [{
-      label: 'Data Pengaduan',
-      data: {!!json_encode($chart)!!},
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)'
-      ],
-      borderWidth: 1
-    }]
-  },
-  optionss: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-});
-</script>
+<!-- PIE CHART -->
+<?php 
+	$data = "'$ditanggapi','$ditolak'";
+
+	$bar = "'$all','$pending','$alltanggapan'";
+ ?>
+ <script type="text/javascript">
+ 	var data = [<?= $data ?>];
+ 	var bar = [<?= $bar ?>];
+ </script>
+ <!-- END PIE CHART -->
+
+<script src="{{url('material/js/Chart.min.js')}}"></script>
+<script src="{{url('material/js/chart-bar-demo.js')}}"></script>
+<script src="{{url('material/js/chart-pie-demo.js')}}"></script>
 @endpush

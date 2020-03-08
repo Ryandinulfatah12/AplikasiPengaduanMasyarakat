@@ -57,9 +57,18 @@
                   <div class="form-header purple-gradient">
                     <h3 class="font-weight-500 my-2 py-1"><i class="fas fa-user"></i> Pengaduan Masyarakat</h3>
                   </div>
+                  
+                  @if(session('info') == 1)
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Ada Kesalahan!</strong> Username atau Password tidak Terdaftar, harap di check kembali.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
 
                   <!-- Body -->
-                  <form action="/kirimlogin" method="post">
+                  <form action="{{route('kirimlogin')}}" method="post">
                     @csrf
                       <div class="md-form">
                         <i class="fas fa-user prefix white-text"></i>

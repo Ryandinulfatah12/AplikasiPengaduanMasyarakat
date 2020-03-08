@@ -7,7 +7,7 @@
 		<div class="card card-cascade wider card-transparent">
           <div class="view view-cascade gradient-card-header blue-gradient">
             <h2 class="card-header-title mb-2">Tulis Pengaduan Baru</h2>
-            <p class=""><i class="fas fa-calendar"></i> Silahkan Tulis Pengaduan dengan </p>
+            <p class=""><i class="fas fa-calendar"></i> Silahkan Tulis topik Pengaduan anda</p>
           </div>
           <div class="card-body card-body-cascade ext-center">
 			<form method="POST" action="{{route('post.pengaduan')}}" enctype="multipart/form-data">

@@ -1,4 +1,5 @@
-<footer class="page-footer pt-0 mt-5 mdb-color lighten-4">
+<br><br>
+<footer class="page-footer fixed-bottom pt-0 mt-3 mdb-color lighten-4">
 
 	<!-- Copyright -->
 	<div class="footer-copyright py-3 text-center">
