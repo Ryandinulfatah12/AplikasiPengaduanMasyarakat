@@ -15,13 +15,13 @@
       <ul class="collapsible collapsible-accordion">
         @if(!Auth::user()->level == 'admin' || !Auth::user()->level == 'petugas')
         <li>
-          <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('masyarakat.dashboard')}}" class="waves-effect">Dashboard</a>
+          <a href="{{route('masyarakat.dashboard')}}" class="waves-effect">Dashboard</a>
         </li>
         @endif
         
          @if(Auth::user()->level == 'admin' || Auth::user()->level == 'petugas')
          <li>
-          <i class="w-fa fas fa-tachometer-alt"></i> <a href="{{route('petugas.home')}}" class="waves-effect">Dashboard Petugas</a>
+          <a href="{{route('petugas.home')}}" class="waves-effect">Dashboard Petugas</a>
         </li>
         <li>
           <a class="collapsible-header waves-effect arrow-r">Data Master<i class="fas fa-angle-down rotate-icon"></i>
@@ -33,7 +33,6 @@
               </li>
               <li>
                 <a href="{{route('data.mas')}}" class="waves-effect">Data Masyarakat</a>
-              </li>
               </li>
             </ul>
           </div>
@@ -51,5 +50,7 @@
     <!-- Side navigation links -->
 
   </ul>
+
   <div class="sidenav-bg mask-strong"></div>
+
 </div>

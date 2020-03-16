@@ -5,7 +5,7 @@
 
   <!-- SideNav slide-out button -->
   <div class="float-left">
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
+    <a href="#" data-activates="slide-out" data-target="#slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
   </div>
 
   <!-- Breadcrumb -->

@@ -35,11 +35,9 @@
         <!-- Section heading -->
         <h2 class="text-center my-5 h1">Riwayat Pengaduan Anda</h2>
 
-        <!-- Section description -->
-        <p class="text-center mb-5 w-responsive mx-auto">Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum.</p>
-        
+        @if($riwayat->isEmpty())
+        <h4 class="text-center">Belum ada Riwayat Pengaduan di Akun ini...</h4>  
+        @else
         <!-- Grid row -->
         @foreach($riwayat as $rw)
         <div class="row">
@@ -88,6 +86,7 @@
 
         <hr class="mb-5">
         @endforeach
+        @endif
 
 
       </section>

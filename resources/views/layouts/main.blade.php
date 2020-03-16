@@ -16,9 +16,7 @@
   <link rel="stylesheet" type="text/css" href="{{url('material/css/addons/datatables.min.css')}}">
 
   <!-- Your custom styles (optional) -->
-  <style>
-
-  </style>
+    @stack('css')
 </head>
 
 <body class="fixed-sn white-skin">
@@ -33,7 +31,6 @@
     <!-- Navbar -->
     @include('layouts.nav')
     <!-- Navbar -->
-    </div>
 
   </header>
   <!-- Main Navigation -->
@@ -68,6 +65,7 @@
   <script type="text/javascript" src="{{url('material/js/mdb.min.js')}}"></script>
   <!-- Initializations -->
   <script type="text/javascript" src="{{url('material/js/addons/datatables.min.js')}}"></script>
+
   @stack('js')
   <script>
     // SideNav Initialization

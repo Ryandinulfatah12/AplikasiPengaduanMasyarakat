@@ -43,7 +43,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:pengurus']], function() {
 	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/','pengaduanController@index')->name('data.pengaduan');
 		Route::get('/entri','pengaduanController@entri')->name('verifikasi');
-		Route::get('/detail/{id}','pengaduanController@detail')->name('detail.pengaduan');
+		Route::get('/show/{id}','pengaduanController@detail')->name('show.pengaduan');
 		Route::get('/tanggapan/{id}','pengaduanController@getEntri')->name('getEntri');
 		Route::post('kirimtanggapan','pengaduanController@tanggapanPost')->name('kirim.tanggapan');
 		Route::get('/tolak/{id}','pengaduanController@tolakEntri')->name('tolak.entri');

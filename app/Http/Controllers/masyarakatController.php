@@ -119,6 +119,7 @@ class masyarakatController extends Controller
             ->select('tanggapan.*','pengaduan.*','petugas.fullname')
             ->where('tanggapan.pengaduan_id', $req->id)
             ->get();
+            
         return view('masyarakat.detail', compact('show'), compact('show2'));
     }
 

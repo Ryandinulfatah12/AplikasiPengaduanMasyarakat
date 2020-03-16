@@ -11,7 +11,7 @@ class pengaduanController extends Controller
     public function index()
     {
     	$pengaduan = Pengaduan::join('masyarakat','masyarakat.id','pengaduan.masyarakat_id')
-            ->select('pengaduan.*','masyarakat.*')
+            ->select('pengaduan.*','masyarakat.fullname','masyarakat.nik')
             ->orderBy('pengaduan.updated_at','desc')
             ->paginate(10);
     	return view('petugas.pages.pengaduan.data-pengaduan', compact('pengaduan'));
@@ -46,6 +46,7 @@ class pengaduanController extends Controller
             ->select('pengaduan.*','fullname')
             ->orderBy('pengaduan.updated_at','desc')
             ->paginate(10);
+
         return view('petugas.pages.pengaduan.verifikasi',compact('entri'));
     }
 
@@ -53,14 +54,14 @@ class pengaduanController extends Controller
     {
         $show = Pengaduan::join('masyarakat','masyarakat.id','pengaduan.masyarakat_id')
             ->where('pengaduan.id', $req->id)
-            ->select('pengaduan.*','fullname')
+            ->select('pengaduan.*','masyarakat.fullname','masyarakat.nik','masyarakat.telp')
             ->first();
-
         $show2 = Tanggapan::join('pengaduan','pengaduan.id','tanggapan.pengaduan_id')
             ->join('petugas','petugas.id','tanggapan.petugas_id')
             ->select('tanggapan.*','pengaduan.*','petugas.fullname')
-            ->where('tanggapan.pengaduan_id',$req->id)
+            ->where('tanggapan.pengaduan_id', $req->id)
             ->get();
+
         return view('petugas.pages.pengaduan.detail', compact('show'),compact('show2'));
     }
 

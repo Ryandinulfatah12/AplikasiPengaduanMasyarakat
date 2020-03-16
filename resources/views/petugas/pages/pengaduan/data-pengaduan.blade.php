@@ -4,7 +4,7 @@
 
 <section class="mt-3">
 	<h1>Ikhtisar Data Pengaduan</h1>
-	<div class="col-md-12">
+	<div class="col-lg-12">
 		<a href="{{route('pengaduan.pdf')}}" class="btn btn-danger">Export PDF</a>
 	    <div class="card">
 	        <div class="card-body">
@@ -40,7 +40,7 @@
 	              	</td>
 	              	<td>
 	              		@if($pd['status'] == 'ditanggapi')
-	              		<a href="{{route('detail.pengaduan',['id'=>$pd->id])}}" class="btn btn-success btn-sm">Detail</a>
+	              		<a href="{{route('show.pengaduan',['id'=>$pd->id])}}" class="btn btn-success btn-sm">Detail</a>
 	              		@else
 	              		<a href="{{route('verifikasi')}}" class="btn btn-warning btn-sm">Belum Ditanggapi</a>
 	              		@endif

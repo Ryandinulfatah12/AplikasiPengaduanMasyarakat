@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('title','Detail Pengaduan')
+
 @section('content')
 
 <section class="mt-3">
@@ -20,7 +21,8 @@
 		                <div class="view">
 		                  <img src="{{url('storage/gambar/'.$show->foto)}}" class="card-img-top"
 		                    alt="Lampiran Anda">
-		                  <a href="#!">
+		                  
+		                  <a class="img-responsive" href="{{url('storage/gambar/'.$show->foto)}}" data-lightbox="1" data-title="Bukti/Lampiran Foto">
 		                    <div class="mask"></div>
 		                  </a>
 		                </div>

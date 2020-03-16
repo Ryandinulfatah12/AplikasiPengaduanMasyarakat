@@ -8,4 +8,6 @@ class Pengaduan extends Model
 {
     protected $table = 'pengaduan';
     protected $guarded = ['id','created_at','updated_at'];
+
+    
 }
