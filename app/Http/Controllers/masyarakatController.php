@@ -23,20 +23,20 @@ class masyarakatController extends Controller
     public function save(Request $req)
     {
     	\Validator::make($req->all(), [
-    		'fullname'=>'required|between:3,100',
-    		'username'=>'required|between:4,50|unique:petugas,username|alpha_dash',
+            'fullname'=>'required|between:3,100',
+            'username'=>'required|between:4,50|unique:petugas,username|alpha_dash',
             'username'=>'required|between:4,50|unique:masyarakat,username|alpha_dash',
-    		'password'=>'nullable|min:6',
-    		'repassword'=>'same:password',
-    		'telp'=>'required:max:11',
-    		'nik'=>'required:max:17',
-            'nik'=>'required:min:17'
-    	])->validate();
+            'password'=>'nullable|min:6',
+            'repassword'=>'same:password',
+            'telp'=>'required|unique:petugas,nik|min:11',
+            'telp'=>'required|unique:masyarakat,nik|min:11',
+            'nik'=>'required|min:16|max:16',
+        ])->validate();
 
     	$petugas = new Masyarakat;
     	$petugas->fullname = $req->fullname;
     	$petugas->username = $req->username;
-    	$petugas->password = $req->password;
+    	$petugas->password = bcrypt($req->password);
     	$petugas->telp = $req->telp;
     	$petugas->nik = $req->nik;
         if ($petugas->save()) {
@@ -57,11 +57,11 @@ class masyarakatController extends Controller
             'fullname'=>'required|between:3,100',
             'username'=>'required|between:4,50|unique:petugas,username,'.$req->id.',|alpha_dash',
             'username'=>'required|between:4,50|unique:masyarakat,username,'.$req->id.',|alpha_dash',
-            'telp'=>'required',
             'password'=>'nullable|min:6',
             'repassword'=>'same:password',
-            'nik'=>'required:max:17',
-            'nik'=>'required:min:17'
+            'telp'=>'required|unique:petugas,nik|min:11',
+            'telp'=>'required|unique:masyarakat,nik|min:11',
+            'nik'=>'required|min:16|max:16',
         ])->validate();
 
         if(!empty($req->password)) {
@@ -70,7 +70,7 @@ class masyarakatController extends Controller
                 'username'=>$req->username,
                 'telp'=>$req->telp,
                 'nik'=>$req->nik,
-                'password'=>$req->password,
+                'password'=>bcrypt($req->password),
             ];
         } else {
             $field = [
@@ -135,15 +135,15 @@ class masyarakatController extends Controller
             'username'=>'required|between:4,50|unique:masyarakat,username|alpha_dash',
             'password'=>'nullable|min:6',
             'repassword'=>'same:password',
-            'telp'=>'required:max:11',
-            'nik'=>'required:max:17',
-            'nik'=>'required:min:17',
+            'telp'=>'required|unique:petugas,nik|min:11',
+            'telp'=>'required|unique:masyarakat,nik|min:11',
+            'nik'=>'required|min:16|max:16',
         ])->validate();
 
         $register = new Masyarakat;
         $register->fullname = $req->fullname;
         $register->username = $req->username;
-        $register->password = $req->password;
+        $register->password = bcrypt($req->password);
         $register->telp = $req->telp;
         $register->nik = $req->nik;
         if ($register->save()) {

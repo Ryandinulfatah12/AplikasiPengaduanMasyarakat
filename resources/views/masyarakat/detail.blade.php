@@ -18,14 +18,12 @@
 		             <div class="card">
 
 		                <!-- Card image -->
-		                <div class="view">
-		                  <img src="{{url('storage/gambar/'.$show->foto)}}" class="card-img-top"
-		                    alt="Lampiran Anda">
-		                  
-		                  <a class="img-responsive" href="{{url('storage/gambar/'.$show->foto)}}" data-lightbox="1" data-title="Bukti/Lampiran Foto">
-		                    <div class="mask"></div>
-		                  </a>
-		                </div>
+		                <div class="view overlay zoom z-depth-1">
+							<img src="{{url('storage/gambar/'.$show->foto)}}" class="img-fluid" alt="First sample image">
+							<div class="mask flex-center rgba-indigo-strong">
+								<p class="white-text">Lampiran Foto</p>
+							</div>
+						</div>
 
 		                <!-- Card content -->
 		                <div class="card-body">
@@ -33,7 +31,7 @@
 		                  <h5 class="card-title">Isi Pengaduan <span class="badge badge-light">Dari : {{$show->fullname}}</span></h5>
 		                  <hr>
 		                  <!-- Text -->
-		                  <p>{{$show->isi_laporan}}
+		                  <p>{!! $show->isi_laporan !!}
 		                  </p>
 		                </div>
 
@@ -48,7 +46,7 @@
 		                  @foreach($show2 as $sh)
 		                  <h5 class="card-title">Tanggapan <span class="badge badge-light">Dari : {{$sh->fullname}}</span></h5>
 		                  <hr>
-		                  <p>{{$sh->isi_tanggapan}}
+		                  <p>{!! $sh->isi_tanggapan !!}
 		                  </p>
 		                  @endforeach
 		                </div>

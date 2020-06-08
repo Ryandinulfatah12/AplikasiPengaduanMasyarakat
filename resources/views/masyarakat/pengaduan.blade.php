@@ -16,7 +16,7 @@
 			    <div class="md-form">
                   <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
-                      <span>Choose file</span>
+                      <span>Upload Bukti</span>
                       <input type="file" name="foto"
 						class="form-control {{ $errors->has('foto')?'is-invalid':'' }} "
 						accept="image/*" 
@@ -33,7 +33,7 @@
 
 			    <div class="md-form">
 		            <textarea name="isi_laporan" id="textarea-char-counter" class="md-textarea form-control" rows="3" length="300"></textarea>
-		            <label for="textarea-char-counter">Isi Pengaduan Anda</label>
+		            
 	            </div>
 	            <button class="btn btn-primary btn-block">Kirim Pengaduan</button>
 		    </form>
@@ -49,13 +49,14 @@
 
 @endsection
 @push('js')
+<script src="{{url('material/js/vendor/tinymce/tinymce.min.js')}}"></script>
 <script type="text/javascript">
 	function filePreview(input) {
 		if(input.files && input.files[0]) {}
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$('#iGambar + img').remove();
-				$('#iGambar').after('<img src="'+e.target.result+'" width="100" />');
+				$('#iGambar').after('<img src="'+e.target.result+'" width="100px" />');
 			}
 			reader.readAsDataURL(input.files[0]);
 	}
@@ -64,5 +65,11 @@
 			filePreview(this);
 		})
 	})
+
+	tinymce.init({
+		selector:'textarea',
+		menubar: false,
+		inline_styles: true
+	});
 </script>
 @endpush

@@ -72,7 +72,7 @@
                     @csrf
                       <div class="md-form">
                         <i class="fas fa-user prefix white-text"></i>
-                        <input id="email" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
                         <label for="orangeForm-name">Username</label>
                         @if ($errors->has('username'))
                             <span class="invalid-feedback" role="alert">

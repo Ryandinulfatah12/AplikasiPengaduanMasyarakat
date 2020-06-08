@@ -47,7 +47,7 @@
 		        <div class="card mb-5">
 
 		          <div class="row">
-		          	<div class="col-md-5">
+		          	<div class="col-md-5 zoom">
 		                  <img src="{{url('storage/gambar/'.$show->foto)}}" class="card-img-top pt-5 pb-5"
 		                    alt="Lampiran Anda">
 		          	</div>
@@ -56,7 +56,7 @@
 				          <div class="card-body">
 				              <div class="media-body">
 				                <h5 class="mt-0"><strong>Isi Laporan</strong></h5>
-				                <p>{{$show->isi_laporan}}.</p>
+				                <p>{!! $show->isi_laporan !!}.</p>
 				              </div>
 				          </div>
 		          	</div>
@@ -76,7 +76,7 @@
 		          <div class="card-body">
 		              <div class="media-body">
 		                <h5 class="mt-0"><strong>Isi Tanggapan</strong></h5>
-		                <p>{{$s->isi_tanggapan}}.</p>
+		                <p>{!! $s->isi_tanggapan !!}.</p>
 		              </div>
 		          </div>
 		          @endforeach

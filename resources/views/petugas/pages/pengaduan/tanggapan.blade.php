@@ -25,20 +25,19 @@
 		             <div class="card">
 
 		                <!-- Card image -->
-		                <div class="view">
-		                  <img src="{{url('storage/gambar/'.$entri->foto)}}" class="card-img-top"
-		                    alt="Lampiran Anda">
-		                  <a href="#!">
-		                    <div class="mask"></div>
-		                  </a>
-		                </div>
+		                <div class="view overlay zoom z-depth-1">
+							<img src="{{url('storage/gambar/'.$entri->foto)}}" class="img-fluid" alt="First sample image">
+							<div class="mask flex-center rgba-indigo-strong">
+							  <p class="white-text">Lampiran Foto</p>
+							</div>
+						</div>
 
 		                <!-- Card content -->
 		                <div class="card-body">
 		                  <!-- Title -->
 		                  <h4 class="card-title">Isi Pengaduan</h4>
 		                  <!-- Text -->
-		                  <p class="card-text">{{$entri->isi_laporan}}
+		                  <p class="card-text">{!! $entri->isi_laporan !!}
 		                  </p>
 		                </div>
 
@@ -57,7 +56,7 @@
 								<input type="hidden" name="petugas_id" value="{{Auth::user()->id}}">
 								<div class="md-form">
 						            <textarea name="isi_tanggapan" id="textarea-char-counter" class="md-textarea form-control" rows="3" length="300" required></textarea>
-						            <label for="textarea-char-counter">Isi Tanggapan Anda</label>
+						            
 					            </div>
 					            <button type="submit" class="btn btn-primary btn-block" >Kirim Tanggapan</button>
 					            <a href="{{route('verifikasi')}}" class="btn btn-danger btn-block">Kembali</a>
@@ -76,3 +75,14 @@
 </section>
 
 @endsection
+
+@push('js')
+<script src="{{url('material/js/vendor/tinymce/tinymce.min.js')}}"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector:'textarea',
+		menubar: false,
+		inline_styles: true
+	});
+</script>
+@endpush

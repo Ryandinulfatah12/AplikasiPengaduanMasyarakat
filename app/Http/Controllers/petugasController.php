@@ -33,7 +33,7 @@ class petugasController extends Controller
     	$petugas = new Pengurus;
     	$petugas->fullname = $req->fullname;
     	$petugas->username = $req->username;
-    	$petugas->password = $req->password;
+    	$petugas->password = bcrypt($req->password);
     	$petugas->telp = $req->telp;
     	$petugas->level = $req->level;
         if ($petugas->save()) {
@@ -65,7 +65,7 @@ class petugasController extends Controller
                 'username'=>$req->username,
                 'telp'=>$req->telp,
                 'level'=>$req->level,
-                'password'=>$req->password,
+                'password'=>bcrypt($req->password),
             ];
         } else {
             $field = [
